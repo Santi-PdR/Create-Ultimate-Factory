@@ -36,9 +36,7 @@
   "results": [
     {
       "chance": 0.8,
-      "item": {
-        "item": "minecraft:tuff"
-      }
+      "item": "minecraft:tuff"
     }
   ]
 }

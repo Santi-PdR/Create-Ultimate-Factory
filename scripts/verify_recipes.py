@@ -22,10 +22,21 @@ def check_legacy_schema(value, path):
             check_legacy_schema(child, path)
 
 
+def check_recipe_outputs(recipe, path):
+    if recipe.get("type") == "forge:conditional":
+        for entry in recipe.get("recipes", []):
+            check_recipe_outputs(entry.get("recipe", {}), path)
+        return
+    for result in recipe.get("results", []):
+        if "item" in result:
+            assert isinstance(result["item"], str), f"Expected string item result in {path}"
+
+
 conditionals = 0
 for path in recipes:
     data = json.loads(path.read_text())
     check_legacy_schema(data, path)
+    check_recipe_outputs(data, path)
     if data.get("type") == "forge:conditional":
         conditionals += 1
         assert len(data.get("recipes", [])) == 1, f"Invalid Forge conditional wrapper in {path}"

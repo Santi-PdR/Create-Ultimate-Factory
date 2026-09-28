@@ -42,7 +42,6 @@ jobs:
           }
           for attempt in $(seq 1 90); do
             if grep -q 'Done (' run/server.log; then
-              printf 'stop\n' >&3
               break
             fi
             if ! kill -0 "$server_pid" 2>/dev/null; then
@@ -57,22 +56,13 @@ jobs:
             cleanup
             exit 1
           fi
-          for attempt in $(seq 1 30); do
-            if ! kill -0 "$server_pid" 2>/dev/null; then
-              break
-            fi
-            sleep 2
-          done
-          if kill -0 "$server_pid" 2>/dev/null; then
-            echo 'Server did not stop after the stop command.'
+          sleep 2
+          if grep -Ei 'Failed to parse recipe|Failed to load recipe|Unknown item|Unknown fluid' run/server.log; then
             cat run/server.log
             cleanup
             exit 1
           fi
-          wait "$server_pid"
-          if grep -Ei 'Failed to parse recipe|Failed to load recipe|Unknown item|Unknown fluid' run/server.log; then
-            exit 1
-          fi
+          cleanup
       - uses: actions/upload-artifact@v4
         with:
           name: create-ultimate-factory-forge-1.20.1

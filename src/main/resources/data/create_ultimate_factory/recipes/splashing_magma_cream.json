@@ -8,9 +8,7 @@
   "results": [
     {
       "chance": 0.4,
-      "item": {
-        "item": "minecraft:slime_ball"
-      }
+      "item": "minecraft:slime_ball"
     }
   ]
 }

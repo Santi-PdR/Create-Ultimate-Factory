@@ -36,9 +36,7 @@
   "results": [
     {
       "chance": 0.3,
-      "item": {
-        "item": "minecraft:diamond"
-      }
+      "item": "minecraft:diamond"
     }
   ],
   "heatRequirement": "heated"
