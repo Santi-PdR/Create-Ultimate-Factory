@@ -23,6 +23,8 @@ jobs:
         run: python scripts/verify_recipes.py
       - name: Build mod
         run: ./gradlew build --no-daemon
+      - name: Verify packaged JAR
+        run: python scripts/verify_jar.py
       - uses: actions/upload-artifact@v4
         with:
           name: create-ultimate-factory-forge-1.20.1
