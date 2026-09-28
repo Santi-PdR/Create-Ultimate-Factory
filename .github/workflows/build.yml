@@ -31,9 +31,15 @@ jobs:
           mkdir -p run
           printf 'eula=true\n' > run/eula.txt
           mkfifo run/server-input
-          ./gradlew runServer --no-daemon --console=plain <run/server-input >run/server.log 2>&1 &
+          setsid ./gradlew runServer --no-daemon --console=plain <run/server-input >run/server.log 2>&1 &
           server_pid=$!
           exec 3>run/server-input
+          cleanup() {
+            kill -TERM -- "-$server_pid" 2>/dev/null || true
+            sleep 2
+            kill -KILL -- "-$server_pid" 2>/dev/null || true
+            wait "$server_pid" 2>/dev/null || true
+          }
           for attempt in $(seq 1 90); do
             if grep -q 'Done (' run/server.log; then
               printf 'stop\n' >&3
@@ -48,8 +54,19 @@ jobs:
           done
           if ! grep -q 'Done (' run/server.log; then
             cat run/server.log
-            kill "$server_pid" 2>/dev/null || true
-            wait "$server_pid" || true
+            cleanup
+            exit 1
+          fi
+          for attempt in $(seq 1 30); do
+            if ! kill -0 "$server_pid" 2>/dev/null; then
+              break
+            fi
+            sleep 2
+          done
+          if kill -0 "$server_pid" 2>/dev/null; then
+            echo 'Server did not stop after the stop command.'
+            cat run/server.log
+            cleanup
             exit 1
           fi
           wait "$server_pid"
