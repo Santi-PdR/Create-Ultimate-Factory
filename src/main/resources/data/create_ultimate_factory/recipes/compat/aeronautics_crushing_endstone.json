@@ -1,0 +1,35 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "aeronautics"
+        }
+      ],
+      "recipe": {
+        "type": "create:crushing",
+        "ingredients": [
+          {
+            "item": "minecraft:end_stone"
+          }
+        ],
+        "results": [
+          {
+            "item": "aeronautics:end_stone_powder"
+          },
+          {
+            "chance": 0.5,
+            "item": "aeronautics:end_stone_powder"
+          },
+          {
+            "chance": 0.08,
+            "item": "minecraft:ender_pearl"
+          }
+        ],
+        "processingTime": 450
+      }
+    }
+  ]
+}

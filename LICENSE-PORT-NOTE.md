@@ -1,0 +1,1 @@
+The upstream JAR metadata identifies the source project as “All Rights Reserved” and credits Robin Frt. This repository is an unofficial technical port made with the requester's stated permission. This note does not change the upstream license or claim ownership of the original mod or artwork.

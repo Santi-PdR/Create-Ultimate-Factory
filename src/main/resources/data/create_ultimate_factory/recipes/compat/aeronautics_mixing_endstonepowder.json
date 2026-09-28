@@ -1,0 +1,33 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "aeronautics"
+        }
+      ],
+      "recipe": {
+        "type": "create:mixing",
+        "ingredients": [
+          {
+            "tag": "c:cobblestones"
+          },
+          {
+            "item": "aeronautics:end_stone_powder"
+          },
+          {
+            "amount": 25,
+            "fluid": "minecraft:water"
+          }
+        ],
+        "results": [
+          {
+            "item": "minecraft:end_stone"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "type": "create:compacting",
+  "ingredients": [
+    {
+      "item": "minecraft:coal_block"
+    },
+    {
+      "item": "minecraft:coal_block"
+    },
+    {
+      "item": "minecraft:coal_block"
+    },
+    {
+      "item": "minecraft:coal_block"
+    },
+    {
+      "item": "minecraft:coal_block"
+    },
+    {
+      "item": "minecraft:coal_block"
+    },
+    {
+      "item": "minecraft:coal_block"
+    },
+    {
+      "item": "minecraft:coal_block"
+    },
+    {
+      "item": "minecraft:coal_block"
+    },
+    {
+      "amount": 100,
+      "fluid": "minecraft:lava"
+    }
+  ],
+  "results": [
+    {
+      "chance": 0.3,
+      "item": {
+        "item": "minecraft:diamond"
+      }
+    }
+  ],
+  "heatRequirement": "heated"
+}

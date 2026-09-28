@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "wstweaks"
+        }
+      ],
+      "recipe": {
+        "type": "create:crushing",
+        "ingredients": [
+          {
+            "item": "minecraft:blackstone"
+          }
+        ],
+        "results": [
+          {
+            "chance": 0.07,
+            "item": "wstweaks:fragment"
+          },
+          {
+            "chance": 0.25,
+            "item": "minecraft:blackstone"
+          }
+        ],
+        "processingTime": 350
+      }
+    }
+  ]
+}

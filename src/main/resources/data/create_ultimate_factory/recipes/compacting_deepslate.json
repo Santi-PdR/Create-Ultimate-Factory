@@ -1,0 +1,17 @@
+{
+  "type": "create:compacting",
+  "ingredients": [
+    {
+      "item": "minecraft:stone"
+    },
+    {
+      "amount": 50,
+      "fluid": "minecraft:lava"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:deepslate"
+    }
+  ]
+}
